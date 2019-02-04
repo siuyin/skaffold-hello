@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"time"
 
 	stan "github.com/nats-io/go-nats-streaming"
@@ -48,5 +49,15 @@ func subscriber() {
 		}, stan.DurableName("sub1"), stan.DeliverAllAvailable())
 		//		}, stan.DeliverAllAvailable())
 		select {}
+	}()
+}
+
+func webServer() {
+	go func() {
+		log.Println("webServer starting")
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintf(w, "hello this is from go")
+		})
+		log.Fatal(http.ListenAndServe(":8080", nil))
 	}()
 }
