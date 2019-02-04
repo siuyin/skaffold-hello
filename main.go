@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	g := dflt.EnvString("greet", "hi")
+	g := dflt.EnvString("greet", "hello")
 	publisher()
 	subscriber()
 	webServer()
@@ -30,7 +30,7 @@ func publisher() {
 		defer c.Close()
 		for {
 			c.Publish("topic1", []byte(time.Now().Format("15:04:05.000")))
-			time.Sleep(time.Second)
+			time.Sleep(5 * time.Second)
 		}
 	}()
 }
@@ -56,8 +56,11 @@ func subscriber() {
 func webServer() {
 	go func() {
 		log.Println("webServer starting")
+		http.HandleFunc("/ans", func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "The answer is 42.")
+		})
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintln(w, "Hello, this is from a go webserver running in Kubernetes.")
+			fmt.Fprintln(w, "Hello, this is from a go webserver running in kubernetes.")
 		})
 		log.Fatal(http.ListenAndServe(":8080", nil))
 	}()

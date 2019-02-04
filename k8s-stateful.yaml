@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hello
+  labels:
+    app: hello
+spec:
+  replicas: 1
+  serviceName: hello
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: hello
+        image: siuyin/hello
+        ports:
+        - containerPort: 8080
