@@ -23,7 +23,7 @@ func main() {
 func publisher() {
 	go func() {
 		url := dflt.EnvString("NATS", "nats://sk-t-nats-streaming:4222")
-		c, err := stan.Connect("test-cluster", "stan-test-publisher", stan.NatsURL(url))
+		c, err := stan.Connect("my-clust", "stan-test-publisher", stan.NatsURL(url))
 		if err != nil {
 			log.Fatalf("nats-streaming conn: %s: %v", url, err)
 		}
@@ -38,7 +38,7 @@ func publisher() {
 func subscriber() {
 	go func() {
 		url := dflt.EnvString("NATS", "nats://sk-t-nats-streaming:4222")
-		c, err := stan.Connect("test-cluster", "stan-test-subscriber", stan.NatsURL(url))
+		c, err := stan.Connect("my-clust", "stan-test-subscriber", stan.NatsURL(url))
 		if err != nil {
 			log.Fatalf("nats-streaming conn: %s: %v", url, err)
 		}
