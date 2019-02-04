@@ -14,9 +14,10 @@ func main() {
 	g := dflt.EnvString("greet", "hi")
 	publisher()
 	subscriber()
+	webServer()
 	for {
-		fmt.Println("vim-go", g)
-		time.Sleep(time.Second)
+		fmt.Println("skaffold-hello", g)
+		time.Sleep(3 * time.Second)
 	}
 }
 func publisher() {
