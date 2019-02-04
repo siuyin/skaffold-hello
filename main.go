@@ -57,7 +57,7 @@ func webServer() {
 	go func() {
 		log.Println("webServer starting")
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintln(w, "Hello, this is from a go webserver running in kubernetes")
+			fmt.Fprintln(w, "Hello, this is from a go webserver running in Kubernetes.")
 		})
 		log.Fatal(http.ListenAndServe(":8080", nil))
 	}()
