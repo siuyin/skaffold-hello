@@ -30,16 +30,16 @@ type aResp struct {
 
 // aBoss returns c, a work assignment channel
 // and d, a work done (result) channel.
-func aBoss() (chan aInstr, chan aResp) {
-	c := make(chan aInstr)
-	d := make(chan aResp)
+func aBoss() (chan *aInstr, chan *aResp) {
+	c := make(chan *aInstr)
+	d := make(chan *aResp)
 	fmt.Println("aBoss starting")
 	go func() {
 		go func() {
 			i := 0
 			for {
 				ins := aInstr{i, i, "I want it yesterday!"}
-				c <- ins
+				c <- &ins
 				fmt.Printf("aBoss sent %v\n", ins)
 				i++
 			}
@@ -51,7 +51,7 @@ func aBoss() (chan aInstr, chan aResp) {
 	return c, d
 }
 
-func aWorker(c chan aInstr, d chan aResp) {
+func aWorker(c chan *aInstr, d chan *aResp) {
 	fmt.Println("aWorker starting")
 	go func() {
 		for {
@@ -59,7 +59,7 @@ func aWorker(c chan aInstr, d chan aResp) {
 			res := aResp{ins.num, ins.num, ins.num * 2, ""}
 			res.rem = fmt.Sprintf("The result for request %v is %v", res.wNum, res.outp)
 			time.Sleep(time.Second)
-			d <- res
+			d <- &res
 		}
 	}()
 }
