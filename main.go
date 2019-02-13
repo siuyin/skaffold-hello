@@ -18,7 +18,7 @@ func main() {
 	aWork()
 	for {
 		fmt.Println("skaffold-hello", g)
-		time.Sleep(3 * time.Second)
+		time.Sleep(5 * time.Second)
 	}
 }
 func publisher() {
