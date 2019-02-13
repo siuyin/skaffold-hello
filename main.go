@@ -16,6 +16,7 @@ func main() {
 	subscriber()
 	webServer()
 	aWork()
+	aPipe()
 	for {
 		fmt.Println("skaffold-hello", g)
 		time.Sleep(5 * time.Second)
