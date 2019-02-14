@@ -33,6 +33,7 @@ func aPipe() {
 			p = pInit(p, words, &n)
 			p = pTitle(p)
 			p = pLower(p)
+			p = pAha(p)
 			fmt.Printf("output %s\n", p)
 			time.Sleep(3 * time.Second)
 		}
@@ -55,5 +56,10 @@ func pLower(p *aPad) *aPad {
 }
 func pTitle(p *aPad) *aPad {
 	p.b = bytes.ToTitle(p.b)
+	return p
+}
+func pAha(p *aPad) *aPad {
+	aha := []byte("aha: ")
+	p.b = append(aha, p.b...)
 	return p
 }
