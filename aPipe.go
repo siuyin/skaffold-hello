@@ -29,8 +29,7 @@ func aPipe() {
 			n     int
 		)
 		for {
-			p := new(aPad)
-			p = pInit(p, words, &n)
+			p := pNewAPad(words, &n)
 			p = pTitle(p)
 			p = pLower(p)
 			p = pAha(p)
@@ -40,7 +39,8 @@ func aPipe() {
 	}()
 }
 
-func pInit(p *aPad, words []string, n *int) *aPad {
+func pNewAPad(words []string, n *int) *aPad {
+	p := new(aPad)
 	rand.Shuffle(len(words), func(i, j int) {
 		words[i], words[j] = words[j], words[i]
 	})
