@@ -1,4 +1,4 @@
-package main
+package pipe
 
 import (
 	"bytes"
@@ -19,10 +19,10 @@ func (p *aPad) String() string {
 	return fmt.Sprintf("%d: %s", p.num, p.b)
 }
 
-// aPipe represents a pipeline of work.
+// Work represents a pipeline of work.
 // A pipeline accepts a pointer to aPad
 // and returns a pointer to aPad.
-func aPipe() {
+func Work() {
 	go func() {
 		var (
 			words = strings.Fields("The quick Brown fox jumps over the Lazy dog")

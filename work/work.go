@@ -1,13 +1,13 @@
-package main
+package work
 
 import (
 	"fmt"
 	"time"
 )
 
-// aWork comprises aBoss and one or more
+// Work comprises aBoss and one or more
 // aWorkers.
-func aWork() {
+func Work() {
 	go func() {
 		aCh, aDone := aBoss()
 		for i := 0; i < 1; i++ {
