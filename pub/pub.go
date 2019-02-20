@@ -25,7 +25,7 @@ func publisher() {
 		}
 		defer c.Close()
 		for {
-			c.Publish("topic1", []byte(time.Now().Format("15:04:05.000")))
+			c.Publish("topic1", []byte(time.Now().Format("The time is: 15:04:05.000 MST")))
 			time.Sleep(5 * time.Second)
 		}
 	}()
