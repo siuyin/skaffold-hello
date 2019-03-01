@@ -6,7 +6,7 @@ in kubernetes and with a service name sk-t-nats-streaming
 (skaffold test nats streaming)
 
 # pre-requisite nats-streaming
-    helm install --name sk-t ~/go/charts/nats-streaming
+    helm install --name sk-t --set clusterID=my-clust ~/go/charts/nats-streaming
 
 to remove:
 
