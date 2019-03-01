@@ -9,6 +9,7 @@ in kubernetes and with a service name sk-t-nats-streaming
     helm install --name sk-t ~/go/charts/nats-streaming
 
 to remove:
+
     helm delete --purge sk-t
 
 # setup
