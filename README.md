@@ -5,6 +5,12 @@ Assumes a nats-streaming server is available
 in kubernetes and with a service name sk-t-nats-streaming
 (skaffold test nats streaming)
 
+# pre-requisite nats-streaming
+    helm install --name sk-t ~/go/charts/nats-streaming
+
+to remove:
+    helm delete --purge sk-t
+
 # setup
     go mod vendor
     skaffold build | run | dev
